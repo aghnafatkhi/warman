@@ -4,9 +4,7 @@ export interface MenuItem {
   category: 'rice-bowl' | 'main-course' | 'side-dish' | 'sambal' | 'savory-bites' | 'sweet-bites';
   price: number;
   description?: string;
-  sambalOptions?: boolean;
   portionNote?: string;
-  addOnOption?: string;
   image?: string;
 }
 
@@ -14,14 +12,11 @@ export interface SambalItem {
   id: string;
   name: string;
   price: number;
-  description: string;
-  badge: string;
 }
 
 export const RESTAURANT_INFO = {
   name: "Warman Restaurant",
   brandName: "WARMAN",
-  tagline: "Indonesian Comfort Food & Sambal",
   address: {
     line1: "Ruko Commpark",
     line2: "Jl. Canadian Broadway Kota Wisata No. 15 Blok E",
@@ -30,15 +25,13 @@ export const RESTAURANT_INFO = {
     regency: "Kabupaten Bogor",
     province: "Jawa Barat",
     postalCode: "16820",
-    country: "Indonesia",
-    full: "Ruko Commpark, Jl. Canadian Broadway Kota Wisata No. 15 Blok E, Limus Nunggal, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820"
+    full: "Ruko Commpark, Jl. Canadian Broadway Kota Wisata No. 15 Blok E, Limus Nunggal, Kecamatan Cileungsi, Kabupaten Bogor, Jawa Barat 16820"
   },
   googleMapsUrl: "https://maps.app.goo.gl/CNx9b48TZ6nkC8WLA",
   phone: "0821-2345-1707",
-  phoneRaw: "+6282123451707",
-  openingHours: "Setiap hari, 10.00–22.00 WIB",
+  openingHours: "Setiap hari · 10.00–22.00 WIB",
   priceRange: "sekitar Rp25.000–Rp50.000 per orang",
-  googleRating: "4,9",
+  googleRating: "4,9 di Google",
   googleReviewsCount: "170+ ulasan",
   taxNote: "Harga belum termasuk pajak 10%.",
   sambalChoices: ["Korek", "Matah", "Terasi", "Cabe Ijo"]
@@ -47,36 +40,28 @@ export const RESTAURANT_INFO = {
 export const SAMBAL_LIST: SambalItem[] = [
   {
     id: "korek",
-    name: "Sambal Korek",
-    price: 8000,
-    description: "Ulekan cabai rawit dengan siraman minyak panas gurih.",
-    badge: "Korek"
+    name: "Korek",
+    price: 8000
   },
   {
     id: "matah",
-    name: "Sambal Matah",
-    price: 8000,
-    description: "Irisan bawang merah, serai, dan cabai segar beraroma harum.",
-    badge: "Matah"
+    name: "Matah",
+    price: 8000
   },
   {
     id: "terasi",
-    name: "Sambal Terasi",
-    price: 8000,
-    description: "Sambal terasi matang dengan cita rasa gurih khas Nusantara.",
-    badge: "Terasi"
+    name: "Terasi",
+    price: 8000
   },
   {
     id: "cabe-ijo",
     name: "Cabe Ijo",
-    price: 8000,
-    description: "Cabai hijau pilihan dengan racikan rasa gurih segar.",
-    badge: "Cabe Ijo"
+    price: 8000
   }
 ];
 
 export const MENU_CATEGORIES = [
-  { id: 'all', label: 'Semua Menu' },
+  { id: 'all', label: 'Semua' },
   { id: 'rice-bowl', label: 'Rice Bowl' },
   { id: 'main-course', label: 'Main Course' },
   { id: 'side-dish', label: 'Side Dish' },
@@ -93,8 +78,6 @@ export const FULL_MENU: MenuItem[] = [
     category: "rice-bowl",
     price: 26000,
     description: "Nasi putih, ikan dori tepung deep-fried, sambal.",
-    sambalOptions: true,
-    addOnOption: "Telur mata sapi +Rp6.000",
     image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -103,8 +86,6 @@ export const FULL_MENU: MenuItem[] = [
     category: "rice-bowl",
     price: 26000,
     description: "Nasi putih, paru sapi deep-fried, sambal.",
-    sambalOptions: true,
-    addOnOption: "Telur mata sapi +Rp6.000",
     image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -113,8 +94,6 @@ export const FULL_MENU: MenuItem[] = [
     category: "rice-bowl",
     price: 25000,
     description: "Nasi putih, ayam fillet tepung deep-fried, sambal.",
-    sambalOptions: true,
-    addOnOption: "Telur mata sapi +Rp6.000",
     image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80"
   },
   {
@@ -123,8 +102,6 @@ export const FULL_MENU: MenuItem[] = [
     category: "rice-bowl",
     price: 21000,
     description: "Nasi putih, daging ayam suwir, sambal.",
-    sambalOptions: true,
-    addOnOption: "Telur mata sapi +Rp6.000",
     image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80"
   },
 
@@ -134,50 +111,42 @@ export const FULL_MENU: MenuItem[] = [
     name: "Ayam Goreng",
     category: "main-course",
     price: 27000,
-    description: "Daging ayam deep-fried, sambal.",
-    sambalOptions: true
+    description: "Daging ayam deep-fried, sambal."
   },
   {
     id: "mc-paru-sapi",
     name: "Paru Sapi Goreng",
     category: "main-course",
     price: 32000,
-    description: "Paru sapi deep-fried, sambal.",
-    sambalOptions: true
+    description: "Paru sapi deep-fried, sambal."
   },
   {
     id: "mc-ikan-lele",
     name: "Ikan Lele Goreng",
     category: "main-course",
     price: 22000,
-    description: "Ikan lele deep-fried, sambal.",
-    sambalOptions: true
+    description: "Ikan lele deep-fried, sambal."
   },
   {
     id: "mc-ikan-nila",
     name: "Ikan Nila Goreng",
     category: "main-course",
     price: 28000,
-    description: "Ikan nila deep-fried, sambal.",
-    sambalOptions: true
+    description: "Ikan nila deep-fried, sambal."
   },
   {
     id: "mc-telur-barendo-2",
-    name: "Telur Barendo — 2 Telur",
+    name: "Telur Barendo 2 telur",
     category: "main-course",
     price: 22000,
-    description: "Telur ayam deep-fried dimasak dengan teknik khusus, sambal.",
-    portionNote: "2 butir telur",
-    sambalOptions: true
+    description: "Telur ayam deep-fried dimasak dengan teknik khusus, sambal."
   },
   {
     id: "mc-telur-barendo-3",
-    name: "Telur Barendo — 3 Telur",
+    name: "Telur Barendo 3 telur",
     category: "main-course",
     price: 29000,
-    description: "Telur ayam deep-fried dimasak dengan teknik khusus, sambal.",
-    portionNote: "3 butir telur",
-    sambalOptions: true
+    description: "Telur ayam deep-fried dimasak dengan teknik khusus, sambal."
   },
   {
     id: "mc-nasgor-kampoeng",
@@ -197,15 +166,13 @@ export const FULL_MENU: MenuItem[] = [
     id: "mc-nasi-putih",
     name: "Nasi Putih",
     category: "main-course",
-    price: 8000,
-    description: "Nasi putih hangat."
+    price: 8000
   },
   {
     id: "mc-nasi-merah",
     name: "Nasi Merah",
     category: "main-course",
-    price: 10000,
-    description: "Nasi merah pulen dan hangat."
+    price: 10000
   },
 
   // 3. SIDE DISH
@@ -213,52 +180,45 @@ export const FULL_MENU: MenuItem[] = [
     id: "sd-ati-ampela",
     name: "Ati Ampela",
     category: "side-dish",
-    price: 15000,
-    description: "Olahan ati ampela gurih."
+    price: 15000
   },
   {
     id: "sd-bakwan-sayur",
     name: "Bakwan Sayur",
     category: "side-dish",
     price: 24000,
-    description: "Bakwan goreng renyah dengan isi sayuran segar, 3 pcs.",
-    portionNote: "3 pcs"
+    description: "Bakwan goreng renyah dengan isi sayuran segar, 3 pcs."
   },
   {
     id: "sd-bakwan-jagung",
     name: "Bakwan Jagung",
     category: "side-dish",
     price: 24000,
-    description: "Bakwan goreng renyah dengan isi jagung manis, 3 pcs.",
-    portionNote: "3 pcs"
+    description: "Bakwan goreng renyah dengan isi jagung manis, 3 pcs."
   },
   {
     id: "sd-tumis-pare-teri",
     name: "Tumis Pare Teri",
     category: "side-dish",
-    price: 15000,
-    description: "Tumisan pare dengan ikan teri gurih."
+    price: 15000
   },
   {
     id: "sd-tumis-toge-tahu",
     name: "Tumis Toge Tahu",
     category: "side-dish",
-    price: 14000,
-    description: "Tumisan toge segar dan tahu lembut."
+    price: 14000
   },
   {
     id: "sd-tumis-pakcoy",
     name: "Tumis Pakcoy",
     category: "side-dish",
-    price: 12000,
-    description: "Tumisan sayur pakcoy segar."
+    price: 12000
   },
   {
     id: "sd-tumis-kangkung",
     name: "Tumis Kangkung",
     category: "side-dish",
-    price: 14000,
-    description: "Tumisan kangkung bumbu khas."
+    price: 14000
   },
 
   // 4. SAMBAL
@@ -266,29 +226,25 @@ export const FULL_MENU: MenuItem[] = [
     id: "sb-korek",
     name: "Sambal Korek",
     category: "sambal",
-    price: 8000,
-    description: "Porsi ekstra Sambal Korek."
+    price: 8000
   },
   {
     id: "sb-matah",
     name: "Sambal Matah",
     category: "sambal",
-    price: 8000,
-    description: "Porsi ekstra Sambal Matah."
+    price: 8000
   },
   {
     id: "sb-terasi",
     name: "Sambal Terasi",
     category: "sambal",
-    price: 8000,
-    description: "Porsi ekstra Sambal Terasi."
+    price: 8000
   },
   {
     id: "sb-cabe-ijo",
     name: "Cabe Ijo",
     category: "sambal",
-    price: 8000,
-    description: "Porsi ekstra Sambal Cabe Ijo."
+    price: 8000
   },
 
   // 5. SAVORY BITES
@@ -296,106 +252,91 @@ export const FULL_MENU: MenuItem[] = [
     id: "sv-french-fries",
     name: "French Fries",
     category: "savory-bites",
-    price: 21000,
-    description: "Kentang goreng renyah."
+    price: 21000
   },
   {
     id: "sv-tahu-bakso",
     name: "Tahu Bakso Bumbu Rujak",
     category: "savory-bites",
-    price: 24000,
-    description: "Tahu bakso gurih disajikan dengan bumbu rujak."
+    price: 24000
   },
   {
     id: "sv-cireng",
     name: "Cireng Bumbu Rujak",
     category: "savory-bites",
-    price: 17000,
-    description: "Cireng kenyal renyah dengan cocolan bumbu rujak pedas manis."
+    price: 17000
   },
   {
     id: "sv-dimsum",
     name: "Dimsum",
     category: "savory-bites",
-    price: 20000,
-    description: "Kukusan dimsum lembut dan gurih."
+    price: 20000
   },
   {
     id: "sv-tahu-cabe-garam",
     name: "Tahu Cabe Garam",
     category: "savory-bites",
-    price: 22000,
-    description: "Tahu krispi ditumis dengan potongan cabai dan bawang putih renyah."
+    price: 22000
   },
   {
     id: "sv-bakpao-daging",
     name: "Bakpao Goreng Mini Daging",
     category: "savory-bites",
-    price: 21000,
-    description: "Bakpao mini goreng isi daging gurih."
+    price: 21000
   },
   {
     id: "sv-risoles-beef-mayo",
     name: "Risoles Beef Mayo",
     category: "savory-bites",
-    price: 21000,
-    description: "Risoles renyah dengan isian smoked beef dan mayones lezat."
+    price: 21000
   },
   {
     id: "sv-sosis-solo",
     name: "Sosis Solo Ayam",
     category: "savory-bites",
-    price: 20000,
-    description: "Kulit dadar gulung dengan isian ayam cincang berbumbu gurih."
+    price: 20000
   },
   {
     id: "sv-samosa",
     name: "Samosa",
     category: "savory-bites",
-    price: 21000,
-    description: "Pastry renyah segitiga dengan isian gurih rempah."
+    price: 21000
   },
   {
     id: "sv-mozarella-sticks",
     name: "Mozarella Sticks",
     category: "savory-bites",
-    price: 25000,
-    description: "Stik keju mozzarella goreng berbalut tepung renyah."
+    price: 25000
   },
   {
     id: "sv-shrimp-rolls",
     name: "Shrimp Rolls",
     category: "savory-bites",
-    price: 23000,
-    description: "Gulungan udang goreng renyah."
+    price: 23000
   },
   {
     id: "sv-chicken-nugget",
     name: "Chicken Nugget",
     category: "savory-bites",
-    price: 20000,
-    description: "Nugget ayam goreng krispi."
+    price: 20000
   },
   {
     id: "sv-ebi-furai",
     name: "Ebi Furai",
     category: "savory-bites",
-    price: 28000,
-    description: "Udang berbalut tepung roti jepang deep-fried."
+    price: 28000
   },
   {
     id: "sv-beef-sausages",
     name: "Beef Sausages",
     category: "savory-bites",
-    price: 25000,
-    description: "Sosis sapi goreng gurih."
+    price: 25000
   },
   {
     id: "sv-stik-singkong",
     name: "Stik Singkong Goreng",
     category: "savory-bites",
-    price: 21000,
-    description: "Singkong potongan stik goreng renyah di luar lembut di dalam."
+    price: 21000
   },
 
   // 6. SWEET BITES
@@ -403,37 +344,29 @@ export const FULL_MENU: MenuItem[] = [
     id: "sw-pisang-cokelat",
     name: "Pisang Cokelat",
     category: "sweet-bites",
-    price: 21000,
-    description: "Pisang dengan lelehan cokelat dalam balutan kulit renyah."
+    price: 21000
   },
   {
     id: "sw-pisang-goreng",
     name: "Pisang Goreng Tepung",
     category: "sweet-bites",
-    price: 20000,
-    description: "Pisang manis berbalut adonan tepung renyah keemasan."
+    price: 20000
   },
   {
     id: "sw-bakpao-cokelat",
     name: "Bakpao Goreng Mini Cokelat",
     category: "sweet-bites",
-    price: 20000,
-    description: "Bakpao mini goreng dengan isian cokelat manis leleh."
+    price: 20000
   },
   {
     id: "sw-bakpao-pisang",
     name: "Bakpao Goreng Mini Pisang",
     category: "sweet-bites",
-    price: 20000,
-    description: "Bakpao mini goreng dengan isian manis pisang lembut."
+    price: 20000
   }
 ];
 
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(price).replace(/\s+/g, ' ');
+  return `Rp${price.toLocaleString('id-ID')}`;
 }
+

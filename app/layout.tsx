@@ -73,7 +73,7 @@ export default function RootLayout({
     name: RESTAURANT_INFO.name,
     alternateName: RESTAURANT_INFO.brandName,
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80',
-    telephone: RESTAURANT_INFO.phoneRaw,
+    telephone: RESTAURANT_INFO.phone,
     url: 'https://maps.app.goo.gl/CNx9b48TZ6nkC8WLA',
     hasMap: RESTAURANT_INFO.googleMapsUrl,
     address: {

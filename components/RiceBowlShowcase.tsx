@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { FULL_MENU, formatPrice } from '@/data/menu';
+import { ArrowRight } from 'lucide-react';
 
 export default function RiceBowlShowcase() {
   const riceBowls = FULL_MENU.filter((item) => item.category === 'rice-bowl');
@@ -10,16 +11,13 @@ export default function RiceBowlShowcase() {
   return (
     <section
       id="rice-bowl"
-      aria-label="Kategori Rice Bowl"
-      className="py-10 sm:py-14 bg-[#FAF8F5]"
+      aria-label="Rice Bowl Warman"
+      className="py-8 sm:py-12 bg-[#FAF8F5] border-t border-[#E8E2D5]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-5 sm:mb-6 gap-2">
           <div>
-            <div className="text-xs font-bold tracking-widest text-[#B83220] uppercase mb-1">
-              Menu Utama
-            </div>
             <h2
               id="rice-bowl-heading"
               className="text-2xl sm:text-3xl font-extrabold text-[#1C1917] tracking-tight"
@@ -27,17 +25,17 @@ export default function RiceBowlShowcase() {
               Rice Bowl
             </h2>
             <p className="mt-1 text-sm sm:text-base text-[#57534E]">
-              Porsi praktis lengkap dengan nasi putih hangat, lauk pilihan, dan pilihan sambal.
+              Pilih Korek, Matah, Terasi, atau Cabe Ijo.
             </p>
           </div>
 
-          <div className="bg-[#F5F2EB] px-3 py-1.5 rounded border border-[#E2DDD3] text-xs text-[#44403C] self-start sm:self-auto">
-            Add-on: <strong>Telur mata sapi</strong> +Rp6.000
+          <div className="text-xs text-[#57534E] self-start sm:self-auto bg-[#F2EFE9] px-2.5 py-1 rounded border border-[#E0DACF]">
+            Telur mata sapi +Rp6.000
           </div>
         </div>
 
         {/* 4 Rice Bowl Items Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {riceBowls.map((bowl) => (
             <article
               key={bowl.id}
@@ -45,7 +43,7 @@ export default function RiceBowlShowcase() {
               className="bg-white rounded-md border border-[#E2DDD3] overflow-hidden flex flex-col justify-between hover:border-[#D0C9BC] transition-colors"
             >
               <div>
-                {/* Image Container with precise aspect-ratio */}
+                {/* Compact Image Container */}
                 <div className="relative aspect-16/10 w-full bg-[#F5F2EB] overflow-hidden">
                   {bowl.image ? (
                     <Image
@@ -56,18 +54,11 @@ export default function RiceBowlShowcase() {
                       className="object-cover"
                       referrerPolicy="no-referrer"
                     />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-xs text-[#78716C]">
-                      Warman Rice Bowl
-                    </div>
-                  )}
-                  <div className="absolute top-2 right-2 bg-black/70 text-white text-[10px] font-semibold px-2 py-0.5 rounded backdrop-blur-xs">
-                    Pilihan 4 Sambal
-                  </div>
+                  ) : null}
                 </div>
 
                 {/* Details */}
-                <div className="p-3.5 sm:p-4">
+                <div className="p-3 sm:p-3.5">
                   <div className="flex items-baseline justify-between gap-2">
                     <h3 className="font-bold text-sm sm:text-base text-[#1C1917]">
                       {bowl.name}
@@ -77,29 +68,30 @@ export default function RiceBowlShowcase() {
                     </span>
                   </div>
 
-                  <p className="mt-1.5 text-xs text-[#66615B] leading-relaxed">
-                    {bowl.description}
-                  </p>
-
-                  <div className="mt-2 text-[11px] text-[#78716C]">
-                    Pilihan: Korek, Matah, Terasi, Cabe Ijo
-                  </div>
+                  {bowl.description && (
+                    <p className="mt-1 text-xs text-[#66615B] leading-relaxed">
+                      {bowl.description}
+                    </p>
+                  )}
                 </div>
-              </div>
-
-              {/* Action anchor to Full Menu */}
-              <div className="p-3.5 pt-0">
-                <a
-                  href="#menu"
-                  className="w-full py-2 px-3 text-xs font-semibold text-[#1C1917] bg-[#F5F2EB] hover:bg-[#EAE5DB] active:bg-[#DFD9CD] rounded transition-colors text-center block border border-[#E2DDD3]"
-                >
-                  Lihat di Daftar Menu
-                </a>
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Single CTA after grid */}
+        <div className="mt-6 text-center">
+          <a
+            href="#menu"
+            id="view-all-menu-cta"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs sm:text-sm font-semibold text-[#1C1917] bg-[#EFECE6] hover:bg-[#E2DDD3] active:bg-[#D5CFBF] transition-colors rounded-md border border-[#DCD6C9] min-h-[40px]"
+          >
+            <span>Lihat Semua Menu</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </section>
   );
 }
+

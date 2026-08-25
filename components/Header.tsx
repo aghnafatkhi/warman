@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { RESTAURANT_INFO } from '@/data/menu';
-import { Menu, X, MapPin, Phone, ArrowUpRight } from 'lucide-react';
+import { Menu, X, MapPin, Phone } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +16,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on Escape key press
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -31,7 +30,6 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -46,10 +44,10 @@ export default function Header() {
   return (
     <header
       id="site-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
         isScrolled
           ? 'bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E8E2D5] shadow-xs py-2.5 sm:py-3'
-          : 'bg-[#FAF8F5]/85 backdrop-blur-xs border-b border-transparent py-3.5 sm:py-4'
+          : 'bg-[#FAF8F5]/90 backdrop-blur-xs border-b border-transparent py-3 sm:py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -64,9 +62,6 @@ export default function Header() {
             <span className="font-extrabold text-xl sm:text-2xl tracking-wider text-[#1C1917] group-hover:text-[#B83220] transition-colors font-sans">
               {RESTAURANT_INFO.brandName}
             </span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#1C1917] text-white tracking-wider uppercase">
-              Restoran
-            </span>
           </div>
           <span className="text-[10px] sm:text-[11px] text-[#78716C] tracking-wider uppercase font-medium">
             Kota Wisata · Cileungsi
@@ -77,35 +72,35 @@ export default function Header() {
         <nav
           id="desktop-navigation"
           aria-label="Navigasi Utama"
-          className="hidden md:flex items-center space-x-1 lg:space-x-3"
+          className="hidden md:flex items-center space-x-1 lg:space-x-4"
         >
+          <a
+            href="#rice-bowl"
+            id="nav-rice-bowl"
+            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md min-h-[40px] flex items-center"
+          >
+            Rice Bowl
+          </a>
           <a
             href="#menu"
             id="nav-menu"
-            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md"
+            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md min-h-[40px] flex items-center"
           >
             Menu
           </a>
           <a
             href="#sambal"
             id="nav-sambal"
-            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md"
+            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md min-h-[40px] flex items-center"
           >
-            Pilihan Sambal
-          </a>
-          <a
-            href="#rice-bowl"
-            id="nav-rice-bowl"
-            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md"
-          >
-            Rice Bowl
+            Sambal
           </a>
           <a
             href="#lokasi"
             id="nav-lokasi"
-            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md"
+            className="px-3 py-1.5 text-sm font-semibold text-[#44403C] hover:text-[#B83220] hover:bg-[#F0ECE4] transition-colors rounded-md min-h-[40px] flex items-center"
           >
-            Lokasi & Jam Buka
+            Lokasi
           </a>
         </nav>
 
@@ -116,16 +111,16 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             id="header-cta-maps"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs lg:text-sm font-semibold text-[#292524] bg-[#EFECE6] hover:bg-[#E4DFD5] active:bg-[#D9D3C7] transition-colors rounded-md border border-[#DCD6C9]"
+            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs lg:text-sm font-semibold text-[#292524] bg-[#EFECE6] hover:bg-[#E4DFD5] active:bg-[#D9D3C7] transition-colors rounded-md border border-[#DCD6C9] min-h-[40px] whitespace-nowrap"
           >
             <MapPin className="w-3.5 h-3.5 text-[#B83220]" />
-            <span>Petunjuk Arah</span>
+            <span>Buka Maps</span>
           </a>
 
           <a
             href="#menu"
             id="header-cta-menu"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs lg:text-sm font-semibold text-white bg-[#B83220] hover:bg-[#9E2818] active:bg-[#852012] transition-colors rounded-md shadow-xs"
+            className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs lg:text-sm font-semibold text-white bg-[#B83220] hover:bg-[#9E2818] active:bg-[#852012] transition-colors rounded-md shadow-xs min-h-[40px] whitespace-nowrap"
           >
             <span>Lihat Menu</span>
           </a>
@@ -149,7 +144,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Drawer Navigation with Background Overlay */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div
           id="mobile-menu-backdrop"
@@ -167,40 +162,36 @@ export default function Header() {
           >
             <div className="flex flex-col space-y-1">
               <a
+                href="#rice-bowl"
+                id="mobile-nav-link-rice-bowl"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors min-h-[44px] flex items-center"
+              >
+                Rice Bowl
+              </a>
+              <a
                 href="#menu"
                 id="mobile-nav-link-menu"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors flex items-center justify-between"
+                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors min-h-[44px] flex items-center"
               >
-                <span>Daftar Menu</span>
-                <span className="text-xs text-[#78716C]">Lengkap</span>
+                Menu & Harga
               </a>
               <a
                 href="#sambal"
                 id="mobile-nav-link-sambal"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors flex items-center justify-between"
+                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors min-h-[44px] flex items-center"
               >
-                <span>4 Pilihan Sambal</span>
-                <span className="text-xs text-[#B83220]">Khas</span>
-              </a>
-              <a
-                href="#rice-bowl"
-                id="mobile-nav-link-rice-bowl"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors flex items-center justify-between"
-              >
-                <span>Rice Bowl</span>
-                <span className="text-xs text-[#78716C]">Mulai Rp21.000</span>
+                Pilihan Sambal
               </a>
               <a
                 href="#lokasi"
                 id="mobile-nav-link-lokasi"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors flex items-center justify-between"
+                className="px-3 py-3 text-base font-semibold text-[#1C1917] hover:bg-[#EFECE6] rounded-md transition-colors min-h-[44px] flex items-center"
               >
-                <span>Lokasi & Jam Buka</span>
-                <span className="text-xs text-[#1E3A2B]">10.00–22.00</span>
+                Lokasi & Jam Buka
               </a>
             </div>
 
@@ -211,20 +202,19 @@ export default function Header() {
                 rel="noopener noreferrer"
                 id="mobile-cta-maps"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-md font-semibold text-sm text-[#1C1917] bg-[#EFECE6] border border-[#DCD6C9] active:bg-[#E0DACF] min-h-[44px]"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-md font-semibold text-sm text-[#1C1917] bg-[#EFECE6] border border-[#DCD6C9] active:bg-[#E0DACF] min-h-[44px] whitespace-nowrap"
               >
                 <MapPin className="w-4 h-4 text-[#B83220]" />
-                <span>Petunjuk Arah (Google Maps)</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#78716C]" />
+                <span>Buka Maps</span>
               </a>
 
               <a
                 href={`tel:${RESTAURANT_INFO.phone.replace(/[^0-9]/g, '')}`}
                 id="mobile-cta-phone"
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-md font-semibold text-sm text-white bg-[#1C1917] hover:bg-[#292524] active:bg-black min-h-[44px]"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-md font-semibold text-sm text-white bg-[#1C1917] hover:bg-[#292524] active:bg-black min-h-[44px] whitespace-nowrap"
               >
                 <Phone className="w-4 h-4" />
-                <span>Hubungi {RESTAURANT_INFO.phone}</span>
+                <span>Telepon ({RESTAURANT_INFO.phone})</span>
               </a>
             </div>
           </div>
@@ -233,3 +223,4 @@ export default function Header() {
     </header>
   );
 }
+
