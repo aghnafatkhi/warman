@@ -1,0 +1,6 @@
+{
+  "name": "Warman Restaurant",
+  "description": "Website resmi Warman Restaurant di Kota Wisata Cileungsi Bogor. Indonesian comfort food, lauk goreng, rice bowl, dan aneka pilihan sambal khas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
